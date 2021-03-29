@@ -15,22 +15,30 @@ def check(requests, frames):
     frame = []
 
     for char in requests:
+
+        temp = j
         if len(frame) < frames:
             frame.append(char)
             j += 1
-
-        if char != frame[i]:
+        elif char != frame[i]:
             frame.pop(i)
             frame.insert(i, char)
-            j += 1
-        print(frame)
-
-        if i == 2:
-            i = 0
-        else:
             i += 1
+            j += 1
+        if i > 2:
+            i = 0
+        print(str(frame) + ' index: ' + str(i) + ' faults: ' + str(j))
+
+
+
+        #elif j == temp:
+            #continue
+        #else:
+            #i += 1
+
+        #print({temp}, {j})
         loop += 1
-    print(j)
+
     print(loop)
 
 
