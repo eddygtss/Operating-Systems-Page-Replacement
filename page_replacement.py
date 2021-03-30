@@ -13,20 +13,20 @@ def check(requests, page_frames):
 
     # We will check every item in requests list
     for page in requests:
-        # This first conditional is to fill the frame list with the first 3 items, we in
+        # This first conditional is to fill the frame list with the first 3 pages
         if page not in frame and len(frame) != page_frames:
             frame.insert(index, page)
             index += 1
             faults += 1
         # Second conditional will remove the item at the index to be removed according to (FIFO), inserts the new
-        # item at the new location
+        # page at the location the old item was in
         elif page not in frame:
             frame.pop(index)
             frame.insert(index, page)
             index += 1
             faults += 1
 
-        # So we can constraint the list to the size of the number of frames requested we set the index back to 0
+        # We constraint the list to the size to the number of page frames requested so we set the index back to 0
         if index == page_frames:
             index = 0
 
